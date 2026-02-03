@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, MessageCircle, Clock, AlertTriangle } from "lucide-react";
 
 const Contact = () => {
     return (
@@ -48,37 +48,57 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    {/* Form */}
-                    <div className="bg-white p-6 sm:p-7 md:p-8 rounded-2xl shadow-lg border border-gray-100">
-                        <form className="space-y-5 sm:space-y-6">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                                    <input type="text" className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" placeholder="Your Name" />
+                    {/* Quick Support & Map */}
+                    <div className="space-y-6">
+                        <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+                            <h3 className="text-xl font-bold text-gray-900 mb-6">Quick Support</h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <a href="https://wa.me/918470909720" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-green-50 rounded-xl border border-green-100 hover:bg-green-100 transition">
+                                    <div className="bg-green-500 p-2 rounded-lg text-white mr-3">
+                                        <MessageCircle className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs font-semibold text-green-700 uppercase">WhatsApp</p>
+                                        <p className="text-sm font-bold text-gray-900">Chat with us</p>
+                                    </div>
+                                </a>
+
+                                <div className="flex items-center p-4 bg-blue-50 rounded-xl border border-blue-100">
+                                    <div className="bg-blue-600 p-2 rounded-lg text-white mr-3">
+                                        <Clock className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs font-semibold text-blue-700 uppercase">Hours</p>
+                                        <p className="text-sm font-bold text-gray-900">9AM - 6PM</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                                    <input type="tel" className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" placeholder="+91..." />
+
+                                <div className="flex items-center p-4 bg-amber-50 rounded-xl border border-amber-100 sm:col-span-2">
+                                    <div className="bg-amber-500 p-2 rounded-lg text-white mr-3">
+                                        <AlertTriangle className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs font-semibold text-amber-700 uppercase">Emergency Support</p>
+                                        <p className="text-sm font-bold text-gray-900">+91 84709 09720 (24/7 Service)</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Service Required</label>
-                                <select className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition">
-                                    <option>Select a service...</option>
-                                    <option>Quality Assurance (QA)</option>
-                                    <option>Equipment Sales</option>
-                                    <option>AERB Registration</option>
-                                    <option>Repair / Maintenance</option>
-                                </select>
+                        </div>
+
+                        {/* Map Placeholder */}
+                        <div className="bg-white p-4 rounded-2xl shadow-lg border border-gray-100 h-[300px] overflow-hidden relative group">
+                            <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
+                                <MapPin className="w-8 h-8 text-gray-400" />
                             </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                                <textarea rows="4" className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" placeholder="How can we help you?"></textarea>
-                            </div>
-                            <button className="w-full bg-blue-600 text-white font-bold py-2.5 sm:py-3 rounded-lg hover:bg-blue-700 transition shadow-md text-sm sm:text-base">
-                                Send Request
-                            </button>
-                        </form>
+                            <iframe
+                                title="Anteso Biomedical Office"
+                                className="w-full h-full rounded-xl relative z-10"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3498.8105581504953!2d77.1158434753555!3d28.72520617562013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d0130db9f1b4d%3A0xc0c6448378602b91!2sRohini%20Sector%206%2C%20Rohini%2C%20Delhi%2C%20110085!5e0!3m2!1sen!2sin!4v1706865000000!5m2!1sen!2sin"
+                                allowFullScreen=""
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                            ></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
