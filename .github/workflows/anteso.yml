@@ -1,0 +1,50 @@
+name: 🚀 Deploy Vite App to EC2 (/home/ubuntu)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout code
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Setup Node.js
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # 3️⃣ Install dependencies
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      # 4️⃣ Build Vite project
+      - name: 🏗️ Build Project
+        run: npm run build
+
+      # 5️⃣ Setup SSH
+      - name: 🔑 Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_KEY }}" > ~/.ssh/ec2.pem
+          chmod 600 ~/.ssh/ec2.pem
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+
+      # 6️⃣ Deploy dist to EC2 (/home/ubuntu)
+      - name: 🚀 Deploy to EC2
+        run: |
+          rsync -avz --delete dist/ \
+          ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/ubuntu/anteso-website/dist
+
+      # 7️⃣ Reload Nginx
+      - name: 🔄 Reload Nginx
+        run: |
+          ssh -i ~/.ssh/ec2.pem \
+          ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} \
+          "sudo systemctl reload nginx"
